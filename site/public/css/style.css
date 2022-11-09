@@ -13,7 +13,12 @@ body {
   justify-content: center;
 }
 
-
+.headercontroler{
+  position: relative;
+  background-color: #000;
+  height: 105px;
+  width: 100%;
+}
 
 .header {
     position: fixed;
@@ -21,6 +26,7 @@ body {
     background-color: #000;
     width: 100%;
     border-bottom: 3px solid #ffffff;
+    z-index: 1;
   }
 
 .header .container {
@@ -67,6 +73,7 @@ ul li:hover{
   padding: 40px ;
   background-image: url(".././assets/imgs/background.jpg");
   background-size: 100%;
+  z-index: 0;
     
 }
 
@@ -107,9 +114,12 @@ ul li:hover{
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 33%;
+  width: 75%;
   text-align: center;
   font-size: 25px;
+}
+.his{
+  margin-bottom: 50px;
 }
 .tamanho-conteudo { 
   height: fit-content !important;
@@ -153,6 +163,21 @@ ul li:hover{
   position: relative;
   bottom: 0;
   width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  
+}
+.copi{
+  color: #ffffff;
+  width: 40%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 2px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  font-family: 'Courier New', Courier, monospace;
 }
 .rodape .conteudo{
 
@@ -181,3 +206,6 @@ ul li:hover{
 
 .rodape .conteudo ul2 li2 img{
   width: 45px;}
+/* Fim de rodapé */
+
+/* Páginas consequentes
