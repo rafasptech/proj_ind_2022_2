@@ -96,8 +96,8 @@ ul li:hover{
   background-image: linear-gradient(180deg, #000 0%, #000 100%);
   mask-image: linear-gradient(to bottom, transparent 0%, black 100%);
   background-color: #000;
-  /* background-image: linear-gradient(180deg,white 0%,black 100%); */
 }
+
 .conteudohistoria{
   display: flex;
   flex-direction: column;
@@ -120,9 +120,6 @@ ul li:hover{
 }
 .his{
   margin-bottom: 50px;
-}
-.tamanho-conteudo { 
-  height: fit-content !important;
 }
 
 .banner p {
@@ -154,6 +151,10 @@ ul li:hover{
   color: #ffffff;
   margin: 5%;
 }
+.card{
+  display: flex;
+  justify-content: space-around;
+}
 .contexto .card .imago img{
   width: 120px;
 }
@@ -184,12 +185,12 @@ ul li:hover{
   display: flex;
   flex-direction: row;
   color: #ffffff;
-  margin-right: 35%;
-  margin-left: 35%;
+  margin-right: 30%;
+  margin-left: 30%;
 }
 .rodape .conteudo ul2 {
   
-  width: 75%;
+  width: 70%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -200,8 +201,8 @@ ul li:hover{
 }
 
 .rodape .conteudo ul2 li2{
-  padding-left: 10%;
-  padding-right: 10%;
+  padding-left: 1%;
+  padding-right: 1%;
 }
 
 .rodape .conteudo ul2 li2 img{
@@ -209,3 +210,66 @@ ul li:hover{
 /* Fim de rodapé */
 
 /* Páginas consequentes
+
+/* Formulário */
+.caixa{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.banner.caixa{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.banner .caixa .card {
+  border:3px bold #ff0202 ;
+  background-color: #000;
+  height: fit-content;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  color: #e3b062;
+  align-items: center;
+  border-radius: 20px;
+  border: 4px solid #e3b062;
+  z-index: 0.5;
+}
+
+.formulario .tipo_campo {
+  font-size: 20px;
+  font-weight: 600 !important;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+}
+.btn{
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  background-color: #e3b062;
+  border:2px solid #fff;
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.degrade2{
+  position: absolute;
+  top: 783px;
+  width: 100%;
+  height: 2em;
+  background-image: linear-gradient(180deg, #000 0%, #000 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 100%);
+  background-color: #000;
+}
+.degrade3{
+  position: absolute;
+  top: 563px;
+  width: 100%;
+  height: 2em;
+  background-image: linear-gradient(180deg, #000 0%, #000 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 100%);
+  background-color: #000;
+}
+/* Fim formulário */
