@@ -253,7 +253,9 @@ ul li:hover{
   border-radius: 5px;
   margin-top: 20px;
   margin-bottom: 20px;
+  cursor:pointer;
 }
+
 .degrade2{
   position: absolute;
   top: 783px;
@@ -273,3 +275,27 @@ ul li:hover{
   background-color: #000;
 }
 /* Fim formulário */
+/* Mapa de localização */
+.titulomapa{
+  color: #e3b062;
+  padding-left: 20px;
+    
+}
+.externo{
+  color: #e3b062;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.externo iframe{
+  margin-top: 10px;
+  margin-bottom: 50px;
+  margin-left: 50px;
+}
+.externo #texto{
+  width: 50%;
+  text-align: center;
+  margin-left: 25%;
+  margin-right: 25%;
+  font-size:22px;
+}
