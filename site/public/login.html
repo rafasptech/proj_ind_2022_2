@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>La Belle Bijoux - Login</title>
+    <script src="./js/funcoes.js"></script>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="icon" href="./assets/icon/LB.png">
 </head>
@@ -30,6 +31,11 @@
 
     <!-- Banner La Belle -->
     <div class="banner">
+        <div class="alerta_erro">
+            <div class="card_erro" id="cardErro">
+                <span id="mensagem_erro"></span>
+            </div>
+        </div>
         <div class="caixa">
             <div class="card">
                 <h2>Bem vindo Novamente</h2>
@@ -39,7 +45,7 @@
                     <input type="text" id="email_input" placeholder="Login">
 
                     <span class="tipo_campo">Senha:</span>
-                    <input type="text" id="senha_input" placeholder="**********">
+                    <input type="password" id="senha_input" placeholder="**********">
 
                     <button class="btn" onclick="entrar()">Entrar</button>
                 </div>

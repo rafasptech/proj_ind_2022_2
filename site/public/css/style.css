@@ -212,6 +212,29 @@ ul li:hover{
 /* Páginas consequentes
 
 /* Formulário */
+.alerta_erro{
+  display: flex;
+  justify-content: flex-end;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card_erro {
+  display: none;
+  background-color: #000;
+  color: white;
+  width: 230px;
+  position: fixed;
+  border: #e3b062 3px solid;
+  border-radius: 20px;
+  padding: 10px;
+  margin-right: 10%;
+}
+
+.card_erro #mensagem_erro{
+  font-weight: 500;
+  font-size: 20px;
+}
+
 .caixa{
   display: flex;
   flex-direction: column;
@@ -254,6 +277,16 @@ ul li:hover{
   margin-top: 20px;
   margin-bottom: 20px;
   cursor:pointer;
+}
+.loading-div {
+  width: 50px;
+  margin: auto;
+  display: none;
+}
+
+.loading-div img {
+  height: 50px;
+  width: 50px;
 }
 
 .degrade2{

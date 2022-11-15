@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La Belle Bijoux - Cadastro</title>
+    <script src="./js/funcoes.js"></script>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="icon" href="./assets/icon/LB.png">
 </head>
@@ -28,6 +29,11 @@
     </div>
     <!-- Banner La Belle -->
     <div class="banner">
+        <div class="alerta_erro">
+            <div class="card_erro" id="cardErro">
+                <span id="mensagem_erro"></span>
+            </div>
+        </div>
         <div class="caixa">
             <div class="card">
                 <h2>Seja Bem Vindo!</h2>
@@ -47,8 +53,7 @@
 
                     <button class="btn" onclick="cadastrar()">Cadastrar</button>
                 </div>
-                </div>
-
+                
                 <div id="div_aguardar" class="loading-div">
                     <img src="./assets/circle-loading.gif" id="loading-gif">
                 </div>
@@ -59,7 +64,7 @@
             </div>
         </div>
         <div class="container">
-            <div class="degrade3"></div>
+            <div class="degrade2"></div>
         </div>
     </div>
     <!-- Rodapé da página -->
