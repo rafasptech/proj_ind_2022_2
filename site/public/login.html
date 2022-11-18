@@ -17,14 +17,14 @@
     <div class="header">
         <div class="container">
             <!-- Elementos do Container -->
-            <h1 class="titulo">La Belle Bijoux </h1> 
+            <h1 class="titulo">La Belle Bijoux &copy;</h1> 
             <ul class="navbar">
                 <!-- Elementos da navbar -->
                 <li><a href="./index.html">Página Inicial</a></li>
                 <li><a href="./quemsomos.html">Quem Somos?</a></li>
-                <li class="select"><a href="./login.html">Login</a></li>
-                <li><a href="./cadastro.html">Cadastro</a></li>
                 <li><a href="./ondestamos.html">Onde Estamos</a></li>
+                <li><a href="./login.html">Área do Cliente</a></li>
+                
             </ul>
         </div>
     </div>
@@ -46,8 +46,10 @@
 
                     <span class="tipo_campo">Senha:</span>
                     <input type="password" id="senha_input" placeholder="**********">
-
-                    <button class="btn" onclick="entrar()">Entrar</button>
+                    <div class="buttons">
+                        <button class="btn" onclick="entrar()">Entrar</button>
+                        <button class="btn" onclick="window.location.href='./cadastro.html'">Ainda não é cliente?</button>
+                    </div>
                 </div>
             
 
@@ -60,9 +62,7 @@
                 </div>
             </div>
         </div>
-        <div class="container">          
-            <div class="degrade2"></div>
-        </div>
+
     </div>
     <!-- Caixa de Login -->
     <div id="caixadelogin">
