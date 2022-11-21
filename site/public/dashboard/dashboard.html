@@ -5,26 +5,479 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La Belle Bijoux | Área do Cliente</title>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="icon" href="./assets/icon/LB.png">
+    <link rel="stylesheet" href="./dashboards.css">
+    <link rel="icon" href="../assets/icon/LB.png">
 </head>
 <body>
     <!-- Header La Belle -->
-    <div class="headercontroler">
-    </div>
     <div class="header">
         <div class="container">
             <!-- Elementos do Container -->
-            <h1 class="titulo">La Belle Bijoux </h1> 
+            <h1 class="titulo">La Belle Bijoux &copy;</h1> 
             <ul class="navbar">
                 <!-- Elementos da navbar -->
-                <li><a href="./index.html">Página Inicial</a></li>
-                <li class="select"><a href="./quemsomos.html">Quem Somos?</a></li>
-                <li><a href="./login.html">Login</a></li>
-                <li><a href="./cadastro.html">Cadastro</a></li>
-                <li><a href="./ondestamos.html">Onde Estamos</a></li>
+                <li><a href="./index.html">Catálogo</a></li>
+                <li><a href="./quemsomos.html">Favoritos</a></li>
+                <li><a href="./login.html">Carrinho</a></li>
+                <li class="select"><a class="vermelho" href="./cadastro.html">Sair</a></li>
+
             </ul>
         </div>
     </div>
+    <div class="delimiter"></div>
+    <div class="areacliente">
+        <h1>Bem vindo a área do Cliente</h1>
+        <ol class="categoria">
+            <li onclick="mostrarmae()">Dia das mães </li>
+            <li onclick="mostrarnamo()">Dia dos namorados </li>
+            <li onclick="mostrarnatal()">Natal </li>
+            <li onclick="mostraranonov()">Ano Novo </li>
+        </ol>
+        Filtros:
+        <select name="" id="in_categoria">
+            <option value="">-- Selecione o tipo de mercadoria --</option>
+            <option value="colar">Colares</option>
+            <option value="pulseira">Pulseiras</option>
+            <option value="tornozeleiras">Tornozeleiras</option>
+            <option value="brincos">Brincos</option>
+        </select>
+        <select name="" id="in_ouroprata">
+            <option value="">-- Selecione se é ouro ou prata --</option>
+            <option value="ouro">Ouro</option>
+            <option value="prata">Prata</option>
+        </select>
+        <br>
+        Faixa de preços <input type="text" id="in_min" placeholder="Min"> - <input type="text" id="in_max" placeholder="Max">
+
+        <div class="div2" id="div2">
+            
+        </div>
+             <!-- Rodapé da página -->
+    <div class="rodape">
+        <div class="conteudo">
+            <h2 class="final">La Belle Bijoux</h2>                
+            <ul2>   
+                <li2><a href=""><img src="../assets/imgs/icons/instagram.png" alt=""  ></a></li2>
+                <li2><a href=""><img src="../assets/imgs/icons/facebook.png" alt="" ></a></li2>
+                <li2><a href=""><img src="../assets/imgs/icons/linkedin.png" alt=""  ></a></li2>
+                <li2><a href=""><img src="../assets/imgs/icons/wa.png" alt="" ></a></li2>
+            </ul2>
+        </div>
+        <div class="copi">
+            <div class="copitext">Criado e desenvolvido por Digital Insight &copy;.</div>
+        </div>
+    </div>
+    </div>
 </body>
 </html>
+<img src="../assets/imgs/produtos/maes/brinco/ouro/MBO01150.jpg" alt="">
+<script>
+    
+    var listamerc=[{
+        id:"MBO01150",
+        nome:"Trio de Brincos de Bolinhas",
+        categoria:"brinco",
+        comemorativa:"mae",
+        banho:"ouro",
+        precocompra:8,
+        precovenda:15,
+        imglocal:"../assets/imgs/produtos/maes/brinco/ouro/MBO01150.jpg",
+    },{
+        id:"MBO02150",
+        nome:"Brinco de coração pendurado",
+        categoria:"brinco",
+        comemorativa:"mae",
+        banho:"ouro",
+        precocompra:8,
+        precovenda:15,
+        imglocal:"../assets/imgs/produtos/maes/brinco/ouro/MBO02150.jpg",
+    },{
+        id:"MBO03150",
+        nome:"Brinco de Coração e Strass",
+        categoria:"brinco",
+        comemorativa:"mae",
+        banho:"ouro",
+        precocompra:8,
+        precovenda:15,
+        imglocal:"../assets/imgs/produtos/maes/brinco/ouro/MBO03150.jpg",
+    },{
+        id:"MBO04150",
+        nome:"Brinco de coração pendurado II",
+        categoria:"brinco",
+        comemorativa:"mae",
+        banho:"ouro",
+        precocompra:8,
+        precovenda:15,
+        imglocal:"../assets/imgs/produtos/maes/brinco/ouro/MBO04150.jpg",
+    },
+    {   
+        id:"MCO01250",
+        nome:"Colar de olho grego colorido",
+        categoria:"colar",
+        comemorativa:"mae",
+        banho:"ouro",
+        precocompra:12,
+        precovenda:25,
+        imglocal:"../assets/imgs/produtos/maes/colar/ouro/MCO01250.jpg",
+        
+    },{
+        id:"MCO02250",
+        nome:"Colar de coração infinito",
+        categoria:"colar",
+        comemorativa:"mae",
+        banho:"ouro",
+        precocompra:12,
+        precovenda:25,
+        imglocal:"../assets/imgs/produtos/maes/colar/ouro/MCO02250.jpg",
+    },{
+        id:"MCO03250",
+        nome:"Colar de coração e pedrinha",
+        categoria:"colar",
+        comemorativa:"mae",
+        banho:"ouro",
+        precocompra:12,
+        precovenda:25,
+        imglocal:"../assets/imgs/produtos/maes/colar/ouro/MCO03250.jpg",
+    },{
+        id:"MCO04250",
+        nome:"Colar de olho grego colorido",
+        categoria:"colar",
+        comemorativa:"mae",
+        banho:"ouro",
+        precocompra:12,
+        precovenda:25,
+        imglocal:"../assets/imgs/produtos/maes/colar/ouro/MCO04250.jpg",
+    },{
+        id:"MCO05250",
+        nome:"Colar de chavinhas do coração",
+        categoria:"colar",
+        comemorativa:"mae",
+        banho:"ouro",
+        precocompra:12,
+        precovenda:25,
+        imglocal:"../assets/imgs/produtos/maes/colar/ouro/MCO05250.jpg",
+    },{
+        id:"MCP01250",
+        nome:"Colar de fé",
+        categoria:"colar",
+        comemorativa:"mae",
+        banho:"prata",
+        precocompra:12,
+        precovenda:25,
+        imglocal:"../assets/imgs/produtos/maes/colar/prata/MCP01250.jpg",
+
+    },{
+        id:"MCP02250",
+        nome:"Colar de coração e pedrinhas pretas",
+        categoria:"colar",
+        comemorativa:"mae",
+        banho:"prata",
+        precocompra:12,
+        precovenda:25,
+        imglocal:"../assets/imgs/produtos/maes/colar/prata/MCP02250.jpg",
+    },{
+        id:"MCP03250",
+        nome:"Colar de olho grego",
+        categoria:"colar",
+        comemorativa:"mae",
+        banho:"prata",
+        precocompra:12,
+        precovenda:25,
+        imglocal:"../assets/imgs/produtos/maes/colar/prata/MCP03250.jpg",
+    },{
+        id:"MCP04250",
+        nome:"Colar de Força",
+        categoria:"colar",
+        comemorativa:"mae",
+        banho:"prata",
+        precocompra:12,
+        precovenda:25,
+        imglocal:"../assets/imgs/produtos/maes/colar/prata/MCP04250.jpg",
+    },{
+        id:"MCP05250",
+        nome:"Colar de Gratidão",
+        categoria:"colar",
+        comemorativa:"mae",
+        banho:"prata",
+        precocompra:12,
+        precovenda:25,
+        imglocal:"../assets/imgs/produtos/maes/colar/prata/MCP05250.jpg",
+    },{
+        id:"MPO01200",
+        nome:"Pulseira de Coração",
+        categoria:"pulseira",
+        comemorativa:"mae",
+        banho:"ouro",
+        precocompra:10,
+        precovenda:20,
+        imglocal:"../assets/imgs/produtos/maes/pulseira/ouro/MPO01200.jpg",
+    },{
+        id:"MPO02200",
+        nome:"Pulseira do Amor",
+        categoria:"pulseira",
+        comemorativa:"mae",
+        banho:"ouro",
+        precocompra:10,
+        precovenda:20,
+        imglocal:"../assets/imgs/produtos/maes/pulseira/ouro/MPO02200.jpg",
+    },{
+        id:"MPO03200",
+        nome:"Pulseira do Olho Grego",
+        categoria:"pulseira",
+        comemorativa:"mae",
+        banho:"ouro",
+        precocompra:10,
+        precovenda:20,
+        imglocal:"../assets/imgs/produtos/maes/pulseira/ouro/MPO03200.jpg",
+    },{
+        id:"MPO04200",
+        nome:"Pulseira do Olho Grego II",
+        categoria:"pulseira",
+        comemorativa:"mae",
+        banho:"ouro",
+        precocompra:10,
+        precovenda:20,
+        imglocal:"../assets/imgs/produtos/maes/pulseira/ouro/MPO04200.jpg",
+    },{
+        id:"MPO05200",
+        nome:"Pulseira de perolas",
+        categoria:"pulseira",
+        comemorativa:"mae",
+        banho:"ouro",
+        precocompra:10,
+        precovenda:20,
+        imglocal:"../assets/imgs/produtos/maes/pulseira/ouro/MPO05200.jpg",
+    },{
+        id:"MPO06200",
+        nome:"Pulseira da Rainha mãe",
+        categoria:"pulseira",
+        comemorativa:"mae",
+        banho:"ouro",
+        precocompra:10,
+        precovenda:20,
+        imglocal:"../assets/imgs/produtos/maes/pulseira/ouro/MPO06200.jpg",
+    },{
+        id:"MPO06200",
+        nome:"Pulseira da Rainha mãe",
+        categoria:"pulseira",
+        comemorativa:"mae",
+        banho:"ouro",
+        precocompra:10,
+        precovenda:20,
+        imglocal:"../assets/imgs/produtos/maes/pulseira/ouro/MPO06200.jpg",
+    },{
+        id:"MPP01200",
+        nome:"Pulseira Olho Grego",
+        categoria:"pulseira",
+        comemorativa:"mae",
+        banho:"prata",
+        precocompra:10,
+        precovenda:20,
+        imglocal:"../assets/imgs/produtos/maes/pulseira/prata/MPP01200.jpg",
+    },{
+        id:"MPP02200",
+        nome:"Pulseira de pérolas",
+        categoria:"pulseira",
+        comemorativa:"mae",
+        banho:"prata",
+        precocompra:10,
+        precovenda:20,
+        imglocal:"../assets/imgs/produtos/maes/pulseira/prata/MPP02200.jpg",
+    },{
+        id:"MPP03200",
+        nome:"Pulseira de sereia",
+        categoria:"pulseira",
+        comemorativa:"mae",
+        banho:"prata",
+        precocompra:10,
+        precovenda:20,
+        imglocal:"../assets/imgs/produtos/maes/pulseira/prata/MPP03200.jpg",
+    },{
+        id:"MPP04200",
+        nome:"Pulseira do Olho Grego",
+        categoria:"pulseira",
+        comemorativa:"mae",
+        banho:"prata",
+        precocompra:10,
+        precovenda:20,
+        imglocal:"../assets/imgs/produtos/maes/pulseira/prata/MPP04200.jpg",
+    },{
+        id:"MPP05200",
+        nome:"Pulseira de conchinhas",
+        categoria:"pulseira",
+        comemorativa:"mae",
+        banho:"prata",
+        precocompra:10,
+        precovenda:20,
+        imglocal:"../assets/imgs/produtos/maes/pulseira/prata/MPP05200.jpg",
+    },{
+        id:"MPP06200",
+        nome:"Pulseira do Olho Grego II",
+        categoria:"pulseira",
+        comemorativa:"mae",
+        banho:"prata",
+        precocompra:10,
+        precovenda:20,
+        imglocal:"../assets/imgs/produtos/maes/pulseira/prata/MPP06200.jpg",
+    },{
+        id:"NBO01150",
+        nome:"Brinco de Olho Grego com pedrinhas",
+        categoria:"brinco",
+        comemorativa:"namorados",
+        banho:"ouro",
+        precocompra:8,
+        precovenda:15,
+        imglocal:"../assets/imgs/produtos/namorados/brinco/ouro/NBO01150.jpg",
+    },{
+        id:"NBO02150",
+        nome:"Pulseira do Olho Grego II",
+        categoria:"brinco",
+        comemorativa:"namorados",
+        banho:"ouro",
+        precocompra:8,
+        precovenda:15,
+        imglocal:"../assets/imgs/produtos/namorados/brinco/ouro/NBO02150.jpg",
+    },{
+        id:"NCO01250",
+        nome:"Colar de AMOR",
+        categoria:"colar",
+        comemorativa:"namorados",
+        banho:"ouro",
+        precocompra:12,
+        precovenda:25,
+        imglocal:"../assets/imgs/produtos/namorados/colar/ouro/NCO01250.jpg",
+    },{
+        id:"NCO02250",
+        nome:"Colar de Corações",
+        categoria:"colar",
+        comemorativa:"namorados",
+        banho:"ouro",
+        precocompra:12,
+        precovenda:25,
+        imglocal:"../assets/imgs/produtos/namorados/colar/ouro/NCO02250.jpg",
+    },{
+        id:"NCO03250",
+        nome:"Colar de Corações II",
+        categoria:"colar",
+        comemorativa:"namorados",
+        banho:"ouro",
+        precocompra:12,
+        precovenda:25,
+        imglocal:"../assets/imgs/produtos/namorados/colar/ouro/NCO03250.jpg",
+    },{
+        id:"NCO04250",
+        nome:"Colar de Corações III",
+        categoria:"colar",
+        comemorativa:"namorados",
+        banho:"ouro",
+        precocompra:12,
+        precovenda:25,
+        imglocal:"../assets/imgs/produtos/namorados/colar/ouro/NCO04250.jpg",
+    },{
+        id:"NCP01250",
+        nome:"Colar Coração",
+        categoria:"colar",
+        comemorativa:"namorados",
+        banho:"prata",
+        precocompra:12,
+        precovenda:25,
+        imglocal:"../assets/imgs/produtos/namorados/colar/prata/NCP01250.jpg",
+    },{
+        id:"NCP02250",
+        nome:"Colar Coração Cadeado",
+        categoria:"colar",
+        comemorativa:"namorados",
+        banho:"prata",
+        precocompra:12,
+        precovenda:25,
+        imglocal:"../assets/imgs/produtos/namorados/colar/prata/NCP02250.jpg",
+    },{
+        id:"NCP03250",
+        nome:"Colar Coração LOVE",
+        categoria:"colar",
+        comemorativa:"namorados",
+        banho:"prata",
+        precocompra:12,
+        precovenda:25,
+        imglocal:"../assets/imgs/produtos/namorados/colar/prata/NCP03250.jpg",
+    },{
+        id:"NCP04250",
+        nome:"Colar Coração AMOR",
+        categoria:"colar",
+        comemorativa:"namorados",
+        banho:"prata",
+        precocompra:12,
+        precovenda:25,
+        imglocal:"../assets/imgs/produtos/namorados/colar/prata/NCP04250.jpg",
+    },{
+        id:"NPO01200",
+        nome:"Pulseira de escamas",
+        categoria:"pulseira",
+        comemorativa:"namorados",
+        banho:"ouro",
+        precocompra:10,
+        precovenda:20,
+        imglocal:"../assets/imgs/produtos/namorados/pulseira/ouro/NPO01200.jpg",
+    },{
+        id:"NPO02200",
+        nome:"Pulseira de rivieira",
+        categoria:"pulseira",
+        comemorativa:"namorados",
+        banho:"ouro",
+        precocompra:10,
+        precovenda:20,
+        imglocal:"../assets/imgs/produtos/namorados/pulseira/ouro/NPO02200.jpg",
+    },{
+        id:"NPO03200",
+        nome:"Pulseira de coração",
+        categoria:"pulseira",
+        comemorativa:"namorados",
+        banho:"ouro",
+        precocompra:10,
+        precovenda:20,
+        imglocal:"../assets/imgs/produtos/namorados/pulseira/ouro/NPO03200.jpg",
+    },{
+        id:"NPO03200",
+        nome:"Pulseira de coração",
+        categoria:"pulseira",
+        comemorativa:"namorados",
+        banho:"ouro",
+        precocompra:10,
+        precovenda:20,
+        imglocal:"../assets/imgs/produtos/namorados/pulseira/ouro/NPO03200.jpg"
+    }]
+
+
+    var mae=false
+    var namo=false
+    var natal=false
+    var ano=false
+    function mostrarmae(){
+        div2.innerHTML=`<h1>Feliz Dia Das Mães</h1>`
+        mae=true
+        namo=false
+        natal=false
+        ano=false
+    }
+    function mostrarnamo(){
+        div2.innerHTML=`<h1>Feliz Dia Dos Namorados</h1>`
+        mae=false
+        namo=true
+        natal=false
+        ano=false
+    }
+    function mostrarnatal(){
+        div2.innerHTML=`<h1>Feliz Natal</h1>`
+        mae=false
+        namo=false
+        natal=true
+        ano=false
+    }
+    function mostraranonov(){
+        div2.innerHTML=`<h1>Feliz Ano Novo</h1>`
+        mae=false
+        namo=false
+        natal=false
+        ano=true
+    }
+</script>
