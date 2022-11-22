@@ -95,6 +95,19 @@ ul li:hover{
   border: 3px solid white;
   margin: 30px;
   border-radius: 30px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow-y: auto;
+  text-align: center;
+  
+}
+.div2 .produto{
+  width: 150px;
+  padding: 20px;
+}
+.div2 .produto .text{
+  text-align: center;
 }
 /* Fim do box da direita */
 /* Rodapé da página */
