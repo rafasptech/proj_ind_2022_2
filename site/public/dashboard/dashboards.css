@@ -103,12 +103,21 @@ ul li:hover{
   
 }
 .div2 .produto{
-  width: 150px;
-  padding: 20px;
+
+  width: 170px;
+  padding: 10px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  border: 3px solid #ffffff;
+  border-radius: 40px;
+  margin: 10px;
 }
 .div2 .produto .text{
   text-align: center;
 }
+.div2 .produto input{
+  width: 45px;
+}
+
 /* Fim do box da direita */
 /* Rodapé da página */
 .rodape{

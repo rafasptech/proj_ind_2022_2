@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<button onclick="cadastrar()">Cadastrar Todos</button>
+<button onclick="pegarMercadoria()">Pegar itens</button>
+
+<div id="divTeste"></div>
+
+</body>
+</html>
+<script src="./dashboard/listamerc.js"></script>
+<script>
+
+    function cadastrar(){
+        var teste = listamerc
+
+        /* fetch("/usuarios/cadastrarItens", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    id : teste[0].id,
+                    nome : teste[0].nome,
+                    categoria : teste[0].categoria,
+                    comemorativa : teste[0].comemorativa,
+                    banho: teste[0].banho,
+                    precocompra : teste[0].precocompra,
+                    precovenda : teste[0].precovenda,
+                    imglocal : teste[0].imglocal
+                })
+            }).then(function (resposta) {
+                if(resposta.ok){
+                    console.log('Cadastrou')
+                }
+            }) */
+
+        for(var i = 0; i < teste.length; i++){
+
+            fetch("/usuarios/cadastrarItens", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    id : teste[i].id,
+                    nome : teste[i].nome,
+                    categoria : teste[i].categoria,
+                    comemorativa : teste[i].comemorativa,
+                    banho: teste[i].banho,
+                    precocompra : teste[i].precocompra,
+                    precovenda : teste[i].precovenda,
+                    imglocal : teste[i].imglocal
+                })
+            }).then(function (resposta) {
+                if(resposta.ok){
+                    console.log('Cadastrou')
+                }
+            })
+        }
+
+    }
+
+    function pegarMercadoria(){
+
+        fetch("/usuarios/pegarMercadoria").then(function (resposta) {
+            if(resposta.ok){
+                resposta.json().then(function (json){
+                    console.log(json)
+
+                    console.log(json[2].sku)
+                    divTeste.innerHTML = `
+                    ${json[30].sku}<br>
+                    ${json[30].nome}<br>
+                    ${json[30].categoria}<br>
+                    ${json[30].precocompra}<br>
+                    ${json[30].precovenda}<br>
+                    `
+
+                })
+            }
+        })
+    }
+</script>

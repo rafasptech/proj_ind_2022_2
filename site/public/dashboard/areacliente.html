@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Belle Bijoux | Área do Cliente</title>
+    <link rel="stylesheet" href="./dashboards.css">
+    <link rel="icon" href="../assets/icon/LB.png">
+    <script src="./listamerc.js"></script>
+    <script src="./listamerc2.js"></script>
+    <script src="../js/inserir.js"></script>
+</head>
+<body>
+    <!-- Header La Belle -->
+    <div class="header">
+        <div class="container">
+            <!-- Elementos do Container -->
+            <h1 class="titulo">La Belle Bijoux &copy;</h1> 
+            <ul class="navbar">
+                <!-- Elementos da navbar -->
+                <li><a href="./index.html">Catálogo</a></li>
+                <li><a href="./quemsomos.html">Favoritos</a></li>
+                <li><a href="./login.html">Carrinho</a></li>
+                <li class="select"><a class="vermelho" href="./cadastro.html">Sair</a></li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="delimiter"></div>
+    <div class="areacliente">
+        <h1>Bem vindo a área do Cliente</h1>
+        <ol class="categoria">
+            <li onclick="mostrarmae()">Dia das mães </li>
+            <li onclick="mostrarnamo()">Dia dos namorados </li>
+            <li onclick="mostrarnatal()">Natal </li>
+    
+        </ol>
+        
+        Filtros:
+        <select name="" id="sel_tipo_filtro" onchange="show()">
+            <option value="">--selecione o respectivo filtro--</option>
+            <option value="categoria" >Por Categoria</option>
+            <option value="banho" ">Por banho</option>
+            <option value="preco" >Por preço</option>
+        </select>
+
+        <div class="categoria" id="categoria" style="display: none;">
+            Selecione pela categoria da mercadoria: <br>
+            <select name="" id="in_categoria" onchange="cate()">
+                <option value="">-- Selecione o tipo de mercadoria --</option>
+                <option value="colar">Colares</option>
+                <option value="pulseira">Pulseiras</option>
+                <option value="brinco">Brinco</option>
+            </select>
+            
+
+        </div>
+        <div class="banho" id= "banho"style="display: none;">
+            Selecione por tipo de mercadoria: <br>
+            <select name="" id="in_ouroprata" onchange="banho()">
+                <option value="">-- Selecione se é ouro ou prata --</option>
+                <option value="ouro">Ouro</option>
+                <option value="prata">Prata</option>
+            </select>
+            
+
+        </div>
+        <div class="preco" id="preco" style="display: none;">
+            Faixa de preços <br> <input type="text" id="in_min" placeholder="Min"> - <input type="text" id="in_max" placeholder="Max">
+            <button onclick="precofun()">Acrescentar Filtro</button>
+
+        </div>
+        <br>
+
+        <div class="div2" id="div2">
+            
+        </div>
+             <!-- Rodapé da página -->
+    <div class="rodape">
+        <div class="conteudo">
+            <h2 class="final">La Belle Bijoux</h2>                
+            <ul2>   
+                <li2><a href=""><img src="../assets/imgs/icons/instagram.png" alt=""  ></a></li2>
+                <li2><a href=""><img src="../assets/imgs/icons/facebook.png" alt="" ></a></li2>
+                <li2><a href=""><img src="../assets/imgs/icons/linkedin.png" alt=""  ></a></li2>
+                <li2><a href=""><img src="../assets/imgs/icons/wa.png" alt="" ></a></li2>
+            </ul2>
+        </div>
+        <div class="copi">
+            <div class="copitext">Criado e desenvolvido por Digital Insight &copy;.</div>
+        </div>
+    </div>
+    </div>
+</body>
+</html>
+<!-- for (let index = 0; index < listamerc.length ; index++) {
+            if(Number(listamerc[index].precovenda)>=min&&Number(listamerc[index].precovenda)<=max){
+                if (listafav.indexOf(listamerc[index].id)<0){
+                    document.getElementById(listamerc[index].id).lastChild.data="Favoritar"  
+                }else if(listafav.indexOf(listamerc[index].id)>=0){
+                    document.getElementById(listamerc[index].id).lastChild.data="Desfavoritar"
+                }}
+                
+            }
+        
+        
+    -->
+<script>
+    window.onload = (event) => {
+        acrescentar()
+    };
+    var listacar=[]
+    var listafav=[]
+    function show(){
+        if(sel_tipo_filtro.value=="categoria"){
+            document.getElementById("categoria").style.display = "block";
+            document.getElementById("banho").style.display = "none";
+            document.getElementById("preco").style.display = "none";
+        }else if(sel_tipo_filtro.value=="banho"){
+            document.getElementById("categoria").style.display = "none";
+            document.getElementById("banho").style.display = "block";
+            document.getElementById("preco").style.display = "none";
+        }else if(sel_tipo_filtro.value=="preco"){
+            document.getElementById("categoria").style.display = "none";
+            document.getElementById("banho").style.display = "none";
+            document.getElementById("preco").style.display = "block";
+        }
+    }
+    function acrescentar(){
+        div2.innerHTML=""
+        for (let index = 0; index < listamerc.length ; index++) {
+            
+            var id=String(listamerc[index].id)
+            var nome=listamerc[index].imglocal
+            div2.innerHTML+=`<div class="produto" style="text-align: center;"><p style="text-align: center;">${listamerc[index].nome} <br> </p><br><img src="${nome}" alt="" style="width: 150px;"><br>Preço do Produto: R$${(listamerc[index].precovenda).toFixed(2)}<br>
+    Quantidade : <input type="number" id="in_${id}"><button onclick="adicionar('${id}','${index}',in_${id}.value)">Adicionar ao carrinho</button> <button id="${id}" onclick="favorito('${id}','${index}')">Favoritar</button></div>`
+            
+            }
+        for (let index = 0; index < listamerc.length ; index++) {
+            if (listafav.indexOf(listamerc[index].id)<0){
+                document.getElementById(listamerc[index].id).lastChild.data="Favoritar"  
+            }else if(listafav.indexOf(listamerc[index].id)>=0){
+                document.getElementById(listamerc[index].id).lastChild.data="Desfavoritar"
+            }
+        // document.getElementById(listamerc[index].id).lastChild.data="Desfavoritar" 
+
+        }}
+        function correct(){
+
+        
+            if(preco){
+                var min=Number(in_min.value)
+                var max=Number(in_max.value) 
+                for (let index = 0; index < listamerc.length ; index++) {
+                    if(Number(listamerc[index].precovenda)>=min&&Number(listamerc[index].precovenda)<=max){
+                if (listafav.indexOf(listamerc[index].id)<0){
+                    document.getElementById(listamerc[index].id).lastChild.data="Favoritar"  
+                }else if(listafav.indexOf(listamerc[index].id)>=0){
+                    document.getElementById(listamerc[index].id).lastChild.data="Desfavoritar"
+                }}
+                
+            }
+            }else if(mae){
+                for (let index = 0; index < listamerc.length ; index++) {
+                    if(listamerc[index].comemorativa=="mae"){
+                    if (listafav.indexOf(listamerc[index].id)<0){
+                        document.getElementById(listamerc[index].id).lastChild.data="Favoritar"  
+                    }else if(listafav.indexOf(listamerc[index].id)>=0){
+                        document.getElementById(listamerc[index].id).lastChild.data="Desfavoritar"
+                }}
+
+            }
+            }else if(colar){
+                for (let index = 0; index < listamerc.length ; index++) {
+                    if(listamerc[index].categoria=="colar"){
+                    if (listafav.indexOf(listamerc[index].id)<0){
+                        document.getElementById(listamerc[index].id).lastChild.data="Favoritar"  
+                    }else if(listafav.indexOf(listamerc[index].id)>=0){
+                        document.getElementById(listamerc[index].id).lastChild.data="Desfavoritar"
+                }}
+
+            }
+            }else if(pulseira){
+                for (let index = 0; index < listamerc.length ; index++) {
+                    if(listamerc[index].categoria=="pulseira"){
+                    if (listafav.indexOf(listamerc[index].id)<0){
+                        document.getElementById(listamerc[index].id).lastChild.data="Favoritar"  
+                    }else if(listafav.indexOf(listamerc[index].id)>=0){
+                        document.getElementById(listamerc[index].id).lastChild.data="Desfavoritar"
+                }}
+
+            }
+            }else if(brinco){
+                for (let index = 0; index < listamerc.length ; index++) {
+                    if(listamerc[index].categoria=="brinco"){
+                    if (listafav.indexOf(listamerc[index].id)<0){
+                        document.getElementById(listamerc[index].id).lastChild.data="Favoritar"  
+                    }else if(listafav.indexOf(listamerc[index].id)>=0){
+                        document.getElementById(listamerc[index].id).lastChild.data="Desfavoritar"
+                }}
+
+            }
+            }else if(pulseira){
+                for (let index = 0; index < listamerc.length ; index++) {
+                    if(listamerc[index].categoria=="pulseira"){
+                    if (listafav.indexOf(listamerc[index].id)<0){
+                        document.getElementById(listamerc[index].id).lastChild.data="Favoritar"  
+                    }else if(listafav.indexOf(listamerc[index].id)>=0){
+                        document.getElementById(listamerc[index].id).lastChild.data="Desfavoritar"
+                }}
+
+            }
+            }else if(natal){
+                for (let index = 0; index < listamerc.length ; index++) {
+                    if(listamerc[index].comemorativa=="natal"){
+                    if (listafav.indexOf(listamerc[index].id)<0){
+                        document.getElementById(listamerc[index].id).lastChild.data="Favoritar"  
+                    }else if(listafav.indexOf(listamerc[index].id)>=0){
+                        document.getElementById(listamerc[index].id).lastChild.data="Desfavoritar"
+                }}
+
+            }
+            }else if(ouro){
+                for (let index = 0; index < listamerc.length ; index++) {
+                    if(listamerc[index].banho=="ouro"){
+                    if (listafav.indexOf(listamerc[index].id)<0){
+                        document.getElementById(listamerc[index].id).lastChild.data="Favoritar"  
+                    }else if(listafav.indexOf(listamerc[index].id)>=0){
+                        document.getElementById(listamerc[index].id).lastChild.data="Desfavoritar"
+                }}
+
+            }
+            }else if(prata){
+                for (let index = 0; index < listamerc.length ; index++) {
+                    if(listamerc[index].banho=="prata"){
+                    if (listafav.indexOf(listamerc[index].id)<0){
+                        document.getElementById(listamerc[index].id).lastChild.data="Favoritar"  
+                    }else if(listafav.indexOf(listamerc[index].id)>=0){
+                        document.getElementById(listamerc[index].id).lastChild.data="Desfavoritar"
+                }}
+
+            }
+            }else{
+                for (let index = 0; index < listamerc.length ; index++) {
+                    if (listafav.indexOf(listamerc[index].id)<0){
+                        document.getElementById(listamerc[index].id).lastChild.data="Favoritar"  
+                    }else if(listafav.indexOf(listamerc[index].id)>=0){
+                        document.getElementById(listamerc[index].id).lastChild.data="Desfavoritar"
+                }}
+        }}
+    function adicionar(id,index,valor){
+        var precofin=valor*Number(listamerc[index].precovenda)
+        listacar.push({
+            id:id,
+            valor:precofin.toFixed(2)})
+    }
+    function favorito(id,index,text){
+        if (listafav.indexOf(listamerc[index].id)<0){
+            listafav.push(id)
+            correct()
+            
+        }else if(listafav.indexOf(listamerc[index].id)>=0){
+            listafav.splice((listafav.indexOf(listamerc[index].id)),1)
+            console.log(listafav.indexOf(listamerc[index].id)>=0)
+            correct()
+        }
+
+    }
+    var mae=false
+    var namo=false
+    var natal=false
+    var ouro=false
+    var prata=false
+    var colar = false
+    var pulseira = false
+    var brinco = false
+    var preco=false
+    function precofun(){
+        div2.innerHTML=""
+        var min=Number(in_min.value)
+        var max=Number(in_max.value) 
+        for (let index = 0; index < listamerc.length ; index++) {            
+            var id=String(listamerc[index].id)
+            var nome=listamerc[index].imglocal
+            if(Number(listamerc[index].precovenda)>=min&&Number(listamerc[index].precovenda)<=max){
+            div2.innerHTML+=`<div class="produto" style="text-align: center;"><p style="text-align: center;">${listamerc[index].nome} <br> </p><br><img src="${nome}" alt="" style="width: 150px;"><br>Preço do Produto: R$${(listamerc[index].precovenda).toFixed(2)}<br>
+                            Quantidade : <input type="number" id="in_${id}"><button onclick="adicionar('${id}','${index}',in_${id}.value)">Adicionar ao carrinho</button> <button id="${id}" onclick="favorito('${id}','${index}')">Favoritar</button></div>`}
+            
+        }
+        for (let index = 0; index < listamerc.length ; index++) {
+            if(Number(listamerc[index].precovenda)>=min&&Number(listamerc[index].precovenda)<=max){
+                if (listafav.indexOf(listamerc[index].id)<0){
+                    document.getElementById(listamerc[index].id).lastChild.data="Favoritar"  
+                }else if(listafav.indexOf(listamerc[index].id)>=0){
+                    document.getElementById(listamerc[index].id).lastChild.data="Desfavoritar"
+                }}
+                
+            }
+            ouro= false
+            prata= false
+            mae=false
+            namo=false
+            natal=false
+            colar = false
+            pulseira = false
+            brinco = false
+            preco= true
+    }
+    function cate(){
+        div2.innerHTML=""
+        if(in_categoria.value=="colar"){
+            for (let index = 0; index < listamerc.length ; index++) {            
+                var id=String(listamerc[index].id)
+                var nome=listamerc[index].imglocal
+                if(listamerc[index].categoria=="colar"){
+                div2.innerHTML+=`<div class="produto" style="text-align: center;"><p style="text-align: center;">${listamerc[index].nome} <br> </p><br><img src="${nome}" alt="" style="width: 150px;"><br>Preço do Produto: R$${(listamerc[index].precovenda).toFixed(2)}<br>
+                                Quantidade : <input type="number" id="in_${id}"><button onclick="adicionar('${id}','${index}',in_${id}.value)">Adicionar ao carrinho</button> <button id="${id}" onclick="favorito('${id}','${index}')">Favoritar</button></div>`}
+                
+            }
+        for (let index = 0; index < listamerc.length ; index++) {
+            if(listamerc[index].categoria=="colar"){
+                if (listafav.indexOf(listamerc[index].id)<0){
+                    document.getElementById(listamerc[index].id).lastChild.data="Favoritar"  
+                }else if(listafav.indexOf(listamerc[index].id)>=0){
+                    document.getElementById(listamerc[index].id).lastChild.data="Desfavoritar"
+                }}
+                
+            }
+            ouro= false
+            prata= false
+            mae=false
+            namo=false
+            natal=false
+            colar = true
+            pulseira = false
+            brinco = false
+            preco = false
+        }else if(in_categoria.value=="pulseira"){
+            for (let index = 0; index < listamerc.length ; index++) {            
+                var id=String(listamerc[index].id)
+                var nome=listamerc[index].imglocal
+                if(listamerc[index].categoria=="pulseira"){
+                div2.innerHTML+=`<div class="produto" style="text-align: center;"><p style="text-align: center;">${listamerc[index].nome} <br> </p><br><img src="${nome}" alt="" style="width: 150px;"><br>Preço do Produto: R$${(listamerc[index].precovenda).toFixed(2)}<br>
+                                Quantidade : <input type="number" id="in_${id}"><button onclick="adicionar('${id}','${index}',in_${id}.value)">Adicionar ao carrinho</button> <button id="${id}" onclick="favorito('${id}','${index}')">Favoritar</button></div>`}
+                
+            }
+        for (let index = 0; index < listamerc.length ; index++) {
+            if(listamerc[index].categoria=="pulseira"){
+                if (listafav.indexOf(listamerc[index].id)<0){
+                    document.getElementById(listamerc[index].id).lastChild.data="Favoritar"  
+                }else if(listafav.indexOf(listamerc[index].id)>=0){
+                    document.getElementById(listamerc[index].id).lastChild.data="Desfavoritar"
+                }}
+                
+            }
+            ouro= false
+            prata= false
+            mae=false
+            namo=false
+            natal=false
+            colar = false
+            pulseira = true
+            brinco = false
+            preco=false
+        }else if(in_categoria.value=="brinco"){
+            for (let index = 0; index < listamerc.length ; index++) {            
+                var id=String(listamerc[index].id)
+                var nome=listamerc[index].imglocal
+                if(listamerc[index].categoria=="brinco"){
+                div2.innerHTML+=`<div class="produto" style="text-align: center;"><p style="text-align: center;">${listamerc[index].nome} <br> </p><br><img src="${nome}" alt="" style="width: 150px;"><br>Preço do Produto: R$${(listamerc[index].precovenda).toFixed(2)}<br>
+                                Quantidade : <input type="number" id="in_${id}"><button onclick="adicionar('${id}','${index}',in_${id}.value)">Adicionar ao carrinho</button> <button id="${id}" onclick="favorito('${id}','${index}')">Favoritar</button></div>`}
+                
+            }
+        for (let index = 0; index < listamerc.length ; index++) {
+            if(listamerc[index].categoria=="brinco"){
+                if (listafav.indexOf(listamerc[index].id)<0){
+                    document.getElementById(listamerc[index].id).lastChild.data="Favoritar"  
+                }else if(listafav.indexOf(listamerc[index].id)>=0){
+                    document.getElementById(listamerc[index].id).lastChild.data="Desfavoritar"
+                }}
+                
+            }
+            ouro= false
+            prata= false
+            mae=false
+            namo=false
+            natal=false
+            colar = false
+            pulseira = false
+            brinco = true
+            preco=false
+        }
+    }
+    function banho(){
+        div2.innerHTML=""
+        if(in_ouroprata.value=="ouro"){
+            for (let index = 0; index < listamerc.length ; index++) {            
+                var id=String(listamerc[index].id)
+                var nome=listamerc[index].imglocal
+                if(listamerc[index].banho=="ouro"){
+                div2.innerHTML+=`<div class="produto" style="text-align: center;"><p style="text-align: center;">${listamerc[index].nome} <br> </p><br><img src="${nome}" alt="" style="width: 150px;"><br>Preço do Produto: R$${(listamerc[index].precovenda).toFixed(2)}<br>
+                                Quantidade : <input type="number" id="in_${id}"><button onclick="adicionar('${id}','${index}',in_${id}.value)">Adicionar ao carrinho</button> <button id="${id}" onclick="favorito('${id}','${index}')">Favoritar</button></div>`}
+                
+            }
+        for (let index = 0; index < listamerc.length ; index++) {
+            if(listamerc[index].banho=="ouro"){
+                if (listafav.indexOf(listamerc[index].id)<0){
+                    document.getElementById(listamerc[index].id).lastChild.data="Favoritar"  
+                }else if(listafav.indexOf(listamerc[index].id)>=0){
+                    document.getElementById(listamerc[index].id).lastChild.data="Desfavoritar"
+                }}
+                
+            }
+            ouro= true
+            prata= false
+            mae=false
+            namo=false
+            natal=false
+            colar = false
+            pulseira = false
+            brinco = false
+            preco=false
+        }else if(in_ouroprata.value=="prata"){
+            for (let index = 0; index < listamerc.length ; index++) {            
+                var id=String(listamerc[index].id)
+                var nome=listamerc[index].imglocal
+                if(listamerc[index].banho=="prata"){
+                div2.innerHTML+=`<div class="produto" style="text-align: center;"><p style="text-align: center;">${listamerc[index].nome} <br> </p><br><img src="${nome}" alt="" style="width: 150px;"><br>Preço do Produto: R$${(listamerc[index].precovenda).toFixed(2)}<br>
+                                Quantidade : <input type="number" id="in_${id}"><button onclick="adicionar('${id}','${index}',in_${id}.value)">Adicionar ao carrinho</button> <button id="${id}" onclick="favorito('${id}','${index}')">Favoritar</button></div>`}
+                
+            }
+        for (let index = 0; index < listamerc.length ; index++) {
+            if(listamerc[index].banho=="prata"){
+                if (listafav.indexOf(listamerc[index].id)<0){
+                    document.getElementById(listamerc[index].id).lastChild.data="Favoritar"  
+                }else if(listafav.indexOf(listamerc[index].id)>=0){
+                    document.getElementById(listamerc[index].id).lastChild.data="Desfavoritar"
+                }}
+                
+            }
+            ouro= false
+            prata= true
+            mae=false
+            namo=false
+            natal=false
+            colar = false
+            pulseira = false
+            brinco = false
+            preco=false
+        }
+    }
+    function mostrarmae(){
+        div2.innerHTML=""
+        for (let index = 0; index < listamerc.length ; index++) {            
+            var id=String(listamerc[index].id)
+            var nome=listamerc[index].imglocal
+            if(listamerc[index].comemorativa=="mae"){
+            div2.innerHTML+=`<div class="produto" style="text-align: center;"><p style="text-align: center;">${listamerc[index].nome} <br> </p><br><img src="${nome}" alt="" style="width: 150px;"><br>Preço do Produto: R$${(listamerc[index].precovenda).toFixed(2)}<br>
+    Quantidade : <input type="number" id="in_${id}"><button onclick="adicionar('${id}','${index}',in_${id}.value)">Adicionar ao carrinho</button> <button id="${id}" onclick="favorito('${id}','${index}')">Favoritar</button></div>`}
+            
+            }
+        for (let index = 0; index < listamerc.length ; index++) {
+            if(listamerc[index].comemorativa=="mae"){
+                if (listafav.indexOf(listamerc[index].id)<0){
+                    document.getElementById(listamerc[index].id).lastChild.data="Favoritar"  
+                }else if(listafav.indexOf(listamerc[index].id)>=0){
+                    document.getElementById(listamerc[index].id).lastChild.data="Desfavoritar"
+                }}
+
+            }        
+        mae=true
+        namo=false
+        natal=false
+        ouro=false
+        prata=false
+        colar = false
+        pulseira = false
+        brinco = false
+        preco=false
+    }
+    function mostrarnamo(){
+        div2.innerHTML=""
+        for (let index = 0; index < listamerc.length ; index++) {            
+            var id=String(listamerc[index].id)
+            var nome=listamerc[index].imglocal
+            if(listamerc[index].comemorativa=="namorados"){
+            div2.innerHTML+=`<div class="produto" style="text-align: center;"><p style="text-align: center;">${listamerc[index].nome} <br> </p><br><img src="${nome}" alt="" style="width: 150px;"><br>Preço do Produto: R$${(listamerc[index].precovenda).toFixed(2)}<br>
+    Quantidade : <input type="number" id="in_${id}"><button onclick="adicionar('${id}','${index}',in_${id}.value)">Adicionar ao carrinho</button> <button id="${id}" onclick="favorito('${id}','${index}')">Favoritar</button></div>`}
+            
+            }
+        for (let index = 0; index < listamerc.length ; index++) {
+            if(listamerc[index].comemorativa=="namorados"){
+                if (listafav.indexOf(listamerc[index].id)<0){
+                    document.getElementById(listamerc[index].id).lastChild.data="Favoritar"  
+                }else if(listafav.indexOf(listamerc[index].id)>=0){
+                    document.getElementById(listamerc[index].id).lastChild.data="Desfavoritar"
+                }}
+
+            }
+        mae=false
+        namo=true
+        natal=false
+        ouro=false
+        prata=false
+        colar = false
+        pulseira = false
+        brinco = false
+        preco=false
+    }
+    function mostrarnatal(){
+        div2.innerHTML=""
+        for (let index = 0; index < listamerc.length ; index++) {            
+            var id=String(listamerc[index].id)
+            var nome=listamerc[index].imglocal
+            if(listamerc[index].comemorativa=="natal"){
+            div2.innerHTML+=`<div class="produto" style="text-align: center;"><p style="text-align: center;">${listamerc[index].nome} <br> </p><br><img src="${nome}" alt="" style="width: 150px;"><br>Preço do Produto: R$${(listamerc[index].precovenda).toFixed(2)}<br>
+    Quantidade : <input type="number" id="in_${id}"><button onclick="adicionar('${id}','${index}',in_${id}.value)">Adicionar ao carrinho</button> <button id="${id}" onclick="favorito('${id}','${index}')">Favoritar</button></div>`}
+            
+            }
+        for (let index = 0; index < listamerc.length ; index++) {
+            if(listamerc[index].comemorativa=="natal"){
+                if (listafav.indexOf(listamerc[index].id)<0){
+                    document.getElementById(listamerc[index].id).lastChild.data="Favoritar"  
+                }else if(listafav.indexOf(listamerc[index].id)>=0){
+                    document.getElementById(listamerc[index].id).lastChild.data="Desfavoritar"
+                }}
+
+            }
+        mae=false
+        namo=false
+        natal=true
+        ouro=false
+        prata=false
+        colar = false
+        pulseira = false
+        brinco = false
+        preco=false
+
+    }
+
+</script>

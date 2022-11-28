@@ -65,7 +65,7 @@ var listamerc=[{
     imglocal:"../assets/imgs/produtos/maes/colar/ouro/MCO03250.jpg",
 },{
     id:"MCO04250",
-    nome:"Colar de olho grego colorido",
+    nome:"Colar de chave e pedrinha",
     categoria:"colar",
     comemorativa:"mae",
     banho:"ouro",
@@ -74,7 +74,7 @@ var listamerc=[{
     imglocal:"../assets/imgs/produtos/maes/colar/ouro/MCO04250.jpg",
 },{
     id:"MCO05250",
-    nome:"Colar de chavinhas do coração",
+    nome:"Colar de GRATIDÃO",
     categoria:"colar",
     comemorativa:"mae",
     banho:"ouro",
@@ -432,7 +432,7 @@ var listamerc=[{
     banho:"ouro",
     precocompra:8,
     precovenda:15,
-    imglocal:"../assets/imgs/produtos/natal/brinco/ouro/MBO03150.jpg",
+    imglocal:"../assets/imgs/produtos/natal/brinco/ouro/TBO02150.jpg",
 },{
     id:"TBO03150",
     nome:"Brinco do Coração com fé",
@@ -441,7 +441,7 @@ var listamerc=[{
     banho:"ouro",
     precocompra:8,
     precovenda:15,
-    imglocal:"../assets/imgs/produtos/natal/brinco/ouro/MBO03150.jpg",
+    imglocal:"../assets/imgs/produtos/natal/brinco/ouro/TBO03150.jpg",
 },{
     id:"TBO04150",
     nome:"Brinco do do Espirito santo P",
@@ -549,7 +549,7 @@ var listamerc=[{
     banho:"prata",
     precocompra:10,
     precovenda:20,
-    imglocal:"../assets/imgs/produtos/namorados/pulseira/prata/TPO01200.jpg",
+    imglocal:"../assets/imgs/produtos/natal/pulseira/prata/TPO01200.jpg",
 },{
     id:"TPO02200",
     nome:"Pulseira de estrelas com strass",
@@ -558,7 +558,7 @@ var listamerc=[{
     banho:"prata",
     precocompra:10,
     precovenda:20,
-    imglocal:"../assets/imgs/produtos/namorados/pulseira/prata/TPO02200.jpg",
+    imglocal:"../assets/imgs/produtos/natal/pulseira/prata/TPO02200.jpg",
 },{
     id:"TPO03200",
     nome:"Pulseira da árvore da vida",
@@ -567,7 +567,7 @@ var listamerc=[{
     banho:"prata",
     precocompra:10,
     precovenda:20,
-    imglocal:"../assets/imgs/produtos/namorados/pulseira/prata/TPO03200.jpg",
+    imglocal:"../assets/imgs/produtos/natal/pulseira/prata/TPO03200.jpg",
 },{
     id:"TPO04200",
     nome:"Pulseira de cruzes com pedrinhas",
@@ -576,5 +576,5 @@ var listamerc=[{
     banho:"prata",
     precocompra:10,
     precovenda:20,
-    imglocal:"../assets/imgs/produtos/namorados/pulseira/prata/TPO04200.jpg",
+    imglocal:"../assets/imgs/produtos/natal/pulseira/prata/TPO04200.jpg",
 }]

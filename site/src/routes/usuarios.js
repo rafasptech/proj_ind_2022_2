@@ -15,9 +15,19 @@ router.get("/listar", function (req, res) {
 router.post("/cadastrar", function (req, res) {
     usuarioController.cadastrar(req, res);
 })
-
+router.post("/inserir", function (req, res) {
+    usuarioController.inserir(req, res);
+})
 router.post("/autenticar", function (req, res) {
     usuarioController.entrar(req, res);
+});
+
+router.post("/cadastrarItens", function (req, res) {
+    usuarioController.cad(req, res);
+});
+
+router.get("/pegarMercadoria", function (req, res) {
+    usuarioController.pegarMercadoria(req, res);
 });
 
 module.exports = router;
