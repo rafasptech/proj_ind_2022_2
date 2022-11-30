@@ -171,6 +171,16 @@
                 }}
 
             }
+            }else if(namo){
+                for (let index = 0; index < listamerc.length ; index++) {
+                    if(listamerc[index].comemorativa=="namorados"){
+                    if (listafav.indexOf(listamerc[index].id)<0){
+                        document.getElementById(listamerc[index].id).lastChild.data="Favoritar"  
+                    }else if(listafav.indexOf(listamerc[index].id)>=0){
+                        document.getElementById(listamerc[index].id).lastChild.data="Desfavoritar"
+                }}
+
+            }
             }else if(colar){
                 for (let index = 0; index < listamerc.length ; index++) {
                     if(listamerc[index].categoria=="colar"){
