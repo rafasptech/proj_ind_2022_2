@@ -17,13 +17,6 @@ CREATE TABLE usuario (
 	senha VARCHAR(50)
 );
 
-CREATE TABLE aviso (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	titulo VARCHAR(100),
-	descricao VARCHAR(150),
-	fk_usuario INT,
-	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
-);
 
 CREATE TABLE mercadoria(
 	id int primary key auto_increment,
@@ -36,6 +29,38 @@ CREATE TABLE mercadoria(
     precovenda int,
     imglocal varchar(120)
     );
+create table loja(
+	id int primary key auto_increment,
+	cnpj char(11),
+	cep char(8),
+	rua varchar(45),
+	numero int,
+	complemento varchar(145),
+	fk_responsavel int,
+	FOREIGN KEY (fk_responsavel) REFERENCES responsavel(id),
+
+)
+create table favorito(
+	fk_mercadoria int,
+	fk_usuario int,
+	primary key(fkmercadoria,fkusuario),
+	FOREIGN KEY (fk_usuario) REFERENCES usuario(id),
+	FOREIGN KEY (fk_mercadoria) REFERENCES marcadoria(id),
+
+)
+create table responsavel(
+	id int primary key auto_increment,
+	nome varchar(45),
+	cpf char(11),
+	telefone int(11),
+	celular int(11),
+	email varchar(45),
+	cep char(8),
+	rua varchar(45),
+	numero int,
+	complemento varchar(145),
+
+)
 
 /* esta tabela deve estar de acordo com o que está em INSERT de sua API do arduino - dat-acqu-ino */
 
