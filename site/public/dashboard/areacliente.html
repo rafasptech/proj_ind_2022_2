@@ -16,13 +16,13 @@
     <div class="header">
         <div class="container">
             <!-- Elementos do Container -->
-            <h1 class="titulo">La Belle Bijoux &copy;</h1> 
+            <h1 class="titulo"><img class="imagem" src="../assets/imgs/dashboard.png" alt="" style="width: 150  px;"></h1> 
             <ul class="navbar">
                 <!-- Elementos da navbar -->
-                <li><a href="./index.html">Catálogo</a></li>
-                <li><a href="./quemsomos.html">Favoritos</a></li>
-                <li><a href="./login.html">Carrinho</a></li>
-                <li class="select"><a class="vermelho" href="./cadastro.html">Sair</a></li>
+                <li><a onclick="acrescentar()" style="cursor: pointer;">Catálogo</a></li>
+                <li><a onclick="mostrarfav()" style="cursor: pointer;">Favoritos</a></li>
+                <li><a onclick="mostrarcar()" style="cursor: pointer;">Carrinho</a></li>
+                <li class="select"><a class="vermelho" href="../index.html">Sair</a></li>
 
             </ul>
         </div>
@@ -30,20 +30,22 @@
     <div class="delimiter"></div>
     <div class="areacliente">
         <h1>Bem vindo a área do Cliente</h1>
-        <ol class="categoria">
+        <ol class="categoria" id="id1">
             <li onclick="mostrarmae()">Dia das mães </li>
             <li onclick="mostrarnamo()">Dia dos namorados </li>
             <li onclick="mostrarnatal()">Natal </li>
     
         </ol>
-        
-        Filtros:
-        <select name="" id="sel_tipo_filtro" onchange="show()">
-            <option value="">--selecione o respectivo filtro--</option>
-            <option value="categoria" >Por Categoria</option>
-            <option value="banho" ">Por banho</option>
-            <option value="preco" >Por preço</option>
-        </select>
+        <div id="tipofiltro" >
+            <p class="id2" id="id2">Filtros:</p>
+            <select name="" id="sel_tipo_filtro" onchange="show()" >
+                <option value="">--Selecione o respectivo filtro--</option>
+                <option value="categoria" >Por Categoria</option>
+                <option value="banho" ">Por banho</option>
+                <option value="preco" >Por preço</option>
+            </select>
+
+        </div>
 
         <div class="categoria" id="categoria" style="display: none;">
             Selecione pela categoria da mercadoria: <br>
@@ -73,24 +75,33 @@
         </div>
         <br>
 
+        <div class="mostrarfav" style="display: none;">Aqui estão os seus produtos Favoritos</div>
+        <div class="divmostrarcar" style="display: none;">Finalize sua compra aqui no carrinho</div>
+
+        <div class="div3" id="div3" style="display: none;"">
+            
+        </div>
         <div class="div2" id="div2">
             
         </div>
+        <div class="divestatisticas" style="display: none;"></div>
+
+
              <!-- Rodapé da página -->
-    <div class="rodape">
-        <div class="conteudo">
-            <h2 class="final">La Belle Bijoux</h2>                
-            <ul2>   
-                <li2><a href=""><img src="../assets/imgs/icons/instagram.png" alt=""  ></a></li2>
-                <li2><a href=""><img src="../assets/imgs/icons/facebook.png" alt="" ></a></li2>
-                <li2><a href=""><img src="../assets/imgs/icons/linkedin.png" alt=""  ></a></li2>
-                <li2><a href=""><img src="../assets/imgs/icons/wa.png" alt="" ></a></li2>
-            </ul2>
+        <div class="rodape">
+            <div class="conteudo">
+                <h2 class="final">Folheados Los Tres</h2>                
+                <ul2>   
+                    <li2><a href=""><img src="../assets/imgs/icons/instagram.png" alt=""  ></a></li2>
+                    <li2><a href=""><img src="../assets/imgs/icons/facebook.png" alt="" ></a></li2>
+                    <li2><a href=""><img src="../assets/imgs/icons/linkedin.png" alt=""  ></a></li2>
+                    <li2><a href=""><img src="../assets/imgs/icons/wa.png" alt="" ></a></li2>
+                </ul2>
+            </div>
+            <div class="copi">
+                <div class="copitext">Criado e desenvolvido por Digital Insight &copy;.</div>
+            </div>
         </div>
-        <div class="copi">
-            <div class="copitext">Criado e desenvolvido por Digital Insight &copy;.</div>
-        </div>
-    </div>
     </div>
 </body>
 </html>
@@ -106,9 +117,12 @@
         
         
     -->
+<p ></p>
 <script>
+    var listaitens=[]
     window.onload = (event) => {
         acrescentar()
+        
     };
     var listacar=[]
     var listafav=[]
@@ -127,17 +141,89 @@
             document.getElementById("preco").style.display = "block";
         }
     }
+    function mostrarcar(){
+        div3.innerHTML=""
+        document.getElementById("id1").style.display = "none";
+        document.getElementById("preco").style.display = "none";
+        document.getElementById("tipofiltro").style.display = "none";   
+        document.getElementById("categoria").style.display = "none";
+        document.getElementById("banho").style.display = "none";
+        div2.style.display="none"
+        div3.style.display="flex"
+        if (listacar.length==0){
+            div3.innerHTML=`<p style="font-size: 30px;">Seu Carrinho está vazio!</p>`
+        }else{
+            for (let index = 0; index < listacar.length ; index++) {
+                
+                var id=String(listacar[index].id)
+                var quant=listacar[index].quant
+                var valorunit=listacar[index].valorunit
+                var valor=listacar[index].valor
+                
+                    div3.innerHTML+=`<div class="produto" style="text-align: center;"><p style="text-align: center;">${id} <br> </p><br>Valor Unitario: R$${valorunit}<br>Valor Total: R$${valor}<br>
+            Quantidade : <p>${quant}</p><button onclick="removercarr('${id}')">Remover do Carrinho</button> </div>`
+                    
+                
+                
+                }
+                div3.innerHTML+=`<div id="finalicompra" style="display: flex; flex-direction: row ; justify-content: space-around;">
+        <button>Finalizar compra</button> <button>Voltar a Comprar</button>
+    </div>`
+
+        }
+    }
+    
+    function modquant(id,valor){
+        document.getElementById(`in_${id}`).valueAsNumber=valor
+        lista
+
+    }
+    
+    function mostrarfav(){
+        div2.style.display="flex"
+        div3.style.display="none"
+        document.getElementById("id1").style.display = "none";
+        document.getElementById("preco").style.display = "none";
+        document.getElementById("tipofiltro").style.display = "none";   
+        document.getElementById("categoria").style.display = "none";
+        document.getElementById("banho").style.display = "none";
+        
+        div2.innerHTML=""
+        if (listafav.length==0){
+            div2.innerHTML=`<p style="font-size: 30px;text-align: center;justify-content: center;">Sua lista de favoritos está vazia!</p>`}
+            else{
+                for (let index = 0; index < listamerc.length ; index++) {
+                    
+                    var id=String(listamerc[index].id)
+                    var nome=listamerc[index].imglocal
+                    var sku=listafav[index]
+                    // indexOf
+                    if(listafav.indexOf(listamerc[index].id)>=0){
+                        div2.innerHTML+=`<div class="produto" style="text-align: center;"><p style="text-align: center;">${listamerc[index].nome} <br> </p><br><img src="${nome}" alt="" style="width: 150px;"><br>Preço do Produto: R$${(listamerc[index].precovenda).toFixed(2)}<br>
+                Quantidade : <input type="number" id="in_${id}" number=1><button onclick="adicionar('${id}','${index}',in_${id}.value)">Adicionar ao carrinho</button> <button id="${id}" onclick="desfavorito('${id}')">Desfavoritar</button></div>`
+                        
+                    }
+
+            }
+            
+            }
+        }
     function acrescentar(){
+        div2.style.display="flex"
+        div3.style.display="none"
+        document.getElementById("id1").style.display = "flex";
+        document.getElementById("tipofiltro").style.display = "block";   
         div2.innerHTML=""
         for (let index = 0; index < listamerc.length ; index++) {
             
             var id=String(listamerc[index].id)
             var nome=listamerc[index].imglocal
             div2.innerHTML+=`<div class="produto" style="text-align: center;"><p style="text-align: center;">${listamerc[index].nome} <br> </p><br><img src="${nome}" alt="" style="width: 150px;"><br>Preço do Produto: R$${(listamerc[index].precovenda).toFixed(2)}<br>
-    Quantidade : <input type="number" id="in_${id}"><button onclick="adicionar('${id}','${index}',in_${id}.value)">Adicionar ao carrinho</button> <button id="${id}" onclick="favorito('${id}','${index}')">Favoritar</button></div>`
+    Quantidade : <input type="number" id="in_${id}" number=1><button onclick="adicionar('${id}','${index}',in_${id}.value)">Adicionar ao carrinho</button> <button id="${id}" onclick="favorito('${id}','${index}')">Favoritar</button></div>`
             
             }
         for (let index = 0; index < listamerc.length ; index++) {
+            document.getElementById(`in_${listamerc[index].id}`).valueAsNumber=1 
             if (listafav.indexOf(listamerc[index].id)<0){
                 document.getElementById(listamerc[index].id).lastChild.data="Favoritar"  
             }else if(listafav.indexOf(listamerc[index].id)>=0){
@@ -259,11 +345,19 @@
                         document.getElementById(listamerc[index].id).lastChild.data="Desfavoritar"
                 }}
         }}
-    function adicionar(id,index,valor){
-        var precofin=valor*Number(listamerc[index].precovenda)
+    function adicionar(id,index,quant){
+
+        var precofin=quant*Number(listamerc[index].precovenda)
+        var precoun=Number(listamerc[index].precovenda)
+        
+
         listacar.push({
             id:id,
+            quant:quant,
+            valorunit:precoun,
             valor:precofin.toFixed(2)})
+        listaitens.push(id)
+
     }
     function favorito(id,index,text){
         if (listafav.indexOf(listamerc[index].id)<0){
@@ -276,6 +370,15 @@
             correct()
         }
 
+    }
+    function desfavorito(element){
+        listafav.splice(listafav.indexOf(`${element}`),1) 
+        mostrarfav()
+    }
+    function removercarr(element){
+        listacar.splice(listacar.indexOf(`${element}`),1)
+        listaitens.splice(listaitens.indexOf(`${element}`),1) 
+        mostrarcar()
     }
     var mae=false
     var namo=false
@@ -295,7 +398,7 @@
             var nome=listamerc[index].imglocal
             if(Number(listamerc[index].precovenda)>=min&&Number(listamerc[index].precovenda)<=max){
             div2.innerHTML+=`<div class="produto" style="text-align: center;"><p style="text-align: center;">${listamerc[index].nome} <br> </p><br><img src="${nome}" alt="" style="width: 150px;"><br>Preço do Produto: R$${(listamerc[index].precovenda).toFixed(2)}<br>
-                            Quantidade : <input type="number" id="in_${id}"><button onclick="adicionar('${id}','${index}',in_${id}.value)">Adicionar ao carrinho</button> <button id="${id}" onclick="favorito('${id}','${index}')">Favoritar</button></div>`}
+                            Quantidade : <input type="number" id="in_${id}" number=1><button onclick="adicionar('${id}','${index}',in_${id}.value)">Adicionar ao carrinho</button> <button id="${id}" onclick="favorito('${id}','${index}')">Favoritar</button></div>`}
             
         }
         for (let index = 0; index < listamerc.length ; index++) {
@@ -325,7 +428,7 @@
                 var nome=listamerc[index].imglocal
                 if(listamerc[index].categoria=="colar"){
                 div2.innerHTML+=`<div class="produto" style="text-align: center;"><p style="text-align: center;">${listamerc[index].nome} <br> </p><br><img src="${nome}" alt="" style="width: 150px;"><br>Preço do Produto: R$${(listamerc[index].precovenda).toFixed(2)}<br>
-                                Quantidade : <input type="number" id="in_${id}"><button onclick="adicionar('${id}','${index}',in_${id}.value)">Adicionar ao carrinho</button> <button id="${id}" onclick="favorito('${id}','${index}')">Favoritar</button></div>`}
+                                Quantidade : <input type="number" id="in_${id}" number=1><button onclick="adicionar('${id}','${index}',in_${id}.value)">Adicionar ao carrinho</button> <button id="${id}" onclick="favorito('${id}','${index}')">Favoritar</button></div>`}
                 
             }
         for (let index = 0; index < listamerc.length ; index++) {
@@ -352,7 +455,7 @@
                 var nome=listamerc[index].imglocal
                 if(listamerc[index].categoria=="pulseira"){
                 div2.innerHTML+=`<div class="produto" style="text-align: center;"><p style="text-align: center;">${listamerc[index].nome} <br> </p><br><img src="${nome}" alt="" style="width: 150px;"><br>Preço do Produto: R$${(listamerc[index].precovenda).toFixed(2)}<br>
-                                Quantidade : <input type="number" id="in_${id}"><button onclick="adicionar('${id}','${index}',in_${id}.value)">Adicionar ao carrinho</button> <button id="${id}" onclick="favorito('${id}','${index}')">Favoritar</button></div>`}
+                                Quantidade : <input type="number" id="in_${id}" number=1><button onclick="adicionar('${id}','${index}',in_${id}.value)">Adicionar ao carrinho</button> <button id="${id}" onclick="favorito('${id}','${index}')">Favoritar</button></div>`}
                 
             }
         for (let index = 0; index < listamerc.length ; index++) {
@@ -379,7 +482,7 @@
                 var nome=listamerc[index].imglocal
                 if(listamerc[index].categoria=="brinco"){
                 div2.innerHTML+=`<div class="produto" style="text-align: center;"><p style="text-align: center;">${listamerc[index].nome} <br> </p><br><img src="${nome}" alt="" style="width: 150px;"><br>Preço do Produto: R$${(listamerc[index].precovenda).toFixed(2)}<br>
-                                Quantidade : <input type="number" id="in_${id}"><button onclick="adicionar('${id}','${index}',in_${id}.value)">Adicionar ao carrinho</button> <button id="${id}" onclick="favorito('${id}','${index}')">Favoritar</button></div>`}
+                                Quantidade : <input type="number" id="in_${id}" number=1><button onclick="adicionar('${id}','${index}',in_${id}.value)">Adicionar ao carrinho</button> <button id="${id}" onclick="favorito('${id}','${index}')">Favoritar</button></div>`}
                 
             }
         for (let index = 0; index < listamerc.length ; index++) {
@@ -410,7 +513,7 @@
                 var nome=listamerc[index].imglocal
                 if(listamerc[index].banho=="ouro"){
                 div2.innerHTML+=`<div class="produto" style="text-align: center;"><p style="text-align: center;">${listamerc[index].nome} <br> </p><br><img src="${nome}" alt="" style="width: 150px;"><br>Preço do Produto: R$${(listamerc[index].precovenda).toFixed(2)}<br>
-                                Quantidade : <input type="number" id="in_${id}"><button onclick="adicionar('${id}','${index}',in_${id}.value)">Adicionar ao carrinho</button> <button id="${id}" onclick="favorito('${id}','${index}')">Favoritar</button></div>`}
+                                Quantidade : <input type="number" id="in_${id}" number=1><button onclick="adicionar('${id}','${index}',in_${id}.value)">Adicionar ao carrinho</button> <button id="${id}" onclick="favorito('${id}','${index}')">Favoritar</button></div>`}
                 
             }
         for (let index = 0; index < listamerc.length ; index++) {
@@ -437,7 +540,7 @@
                 var nome=listamerc[index].imglocal
                 if(listamerc[index].banho=="prata"){
                 div2.innerHTML+=`<div class="produto" style="text-align: center;"><p style="text-align: center;">${listamerc[index].nome} <br> </p><br><img src="${nome}" alt="" style="width: 150px;"><br>Preço do Produto: R$${(listamerc[index].precovenda).toFixed(2)}<br>
-                                Quantidade : <input type="number" id="in_${id}"><button onclick="adicionar('${id}','${index}',in_${id}.value)">Adicionar ao carrinho</button> <button id="${id}" onclick="favorito('${id}','${index}')">Favoritar</button></div>`}
+                                Quantidade : <input type="number" id="in_${id}" number=1><button onclick="adicionar('${id}','${index}',in_${id}.value)">Adicionar ao carrinho</button> <button id="${id}" onclick="favorito('${id}','${index}')">Favoritar</button></div>`}
                 
             }
         for (let index = 0; index < listamerc.length ; index++) {
@@ -467,7 +570,7 @@
             var nome=listamerc[index].imglocal
             if(listamerc[index].comemorativa=="mae"){
             div2.innerHTML+=`<div class="produto" style="text-align: center;"><p style="text-align: center;">${listamerc[index].nome} <br> </p><br><img src="${nome}" alt="" style="width: 150px;"><br>Preço do Produto: R$${(listamerc[index].precovenda).toFixed(2)}<br>
-    Quantidade : <input type="number" id="in_${id}"><button onclick="adicionar('${id}','${index}',in_${id}.value)">Adicionar ao carrinho</button> <button id="${id}" onclick="favorito('${id}','${index}')">Favoritar</button></div>`}
+    Quantidade : <input type="number" id="in_${id}" number=1><button onclick="adicionar('${id}','${index}',in_${id}.value)">Adicionar ao carrinho</button> <button id="${id}" onclick="favorito('${id}','${index}')">Favoritar</button></div>`}
             
             }
         for (let index = 0; index < listamerc.length ; index++) {
@@ -496,7 +599,7 @@
             var nome=listamerc[index].imglocal
             if(listamerc[index].comemorativa=="namorados"){
             div2.innerHTML+=`<div class="produto" style="text-align: center;"><p style="text-align: center;">${listamerc[index].nome} <br> </p><br><img src="${nome}" alt="" style="width: 150px;"><br>Preço do Produto: R$${(listamerc[index].precovenda).toFixed(2)}<br>
-    Quantidade : <input type="number" id="in_${id}"><button onclick="adicionar('${id}','${index}',in_${id}.value)">Adicionar ao carrinho</button> <button id="${id}" onclick="favorito('${id}','${index}')">Favoritar</button></div>`}
+    Quantidade : <input type="number" id="in_${id}" number=1><button onclick="adicionar('${id}','${index}',in_${id}.value)">Adicionar ao carrinho</button> <button id="${id}" onclick="favorito('${id}','${index}')">Favoritar</button></div>`}
             
             }
         for (let index = 0; index < listamerc.length ; index++) {
@@ -525,7 +628,7 @@
             var nome=listamerc[index].imglocal
             if(listamerc[index].comemorativa=="natal"){
             div2.innerHTML+=`<div class="produto" style="text-align: center;"><p style="text-align: center;">${listamerc[index].nome} <br> </p><br><img src="${nome}" alt="" style="width: 150px;"><br>Preço do Produto: R$${(listamerc[index].precovenda).toFixed(2)}<br>
-    Quantidade : <input type="number" id="in_${id}"><button onclick="adicionar('${id}','${index}',in_${id}.value)">Adicionar ao carrinho</button> <button id="${id}" onclick="favorito('${id}','${index}')">Favoritar</button></div>`}
+    Quantidade : <input type="number" id="in_${id}" number=1><button onclick="adicionar('${id}','${index}',in_${id}.value)">Adicionar ao carrinho</button> <button id="${id}" onclick="favorito('${id}','${index}')">Favoritar</button></div>`}
             
             }
         for (let index = 0; index < listamerc.length ; index++) {

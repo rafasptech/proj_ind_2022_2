@@ -66,16 +66,20 @@ ul li:hover{
   flex-direction: row;
   list-style: none;
   justify-content: space-evenly;
+  font-size: 20px;
 }
 .categoria li:hover{
   cursor: pointer;
+}
+.id2{
+  font-size: 20px;
 }
 
 .navbar {
   list-style: none;  
   text-align: center;
   padding: 0%;
-  font-size: 20px;
+  font-size: 25px;
 }
 
 
@@ -100,6 +104,8 @@ ul li:hover{
   flex-wrap: wrap;
   overflow-y: auto;
   text-align: center;
+  justify-content: center;
+  
   
 }
 .div2 .produto{
@@ -108,8 +114,9 @@ ul li:hover{
   padding: 10px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   border: 3px solid #ffffff;
-  border-radius: 40px;
+  border-radius: 30px;
   margin: 10px;
+  height: 420px;
 }
 .div2 .produto .text{
   text-align: center;
@@ -117,7 +124,34 @@ ul li:hover{
 .div2 .produto input{
   width: 45px;
 }
+.div3{
+  height: 700px;
+  border: 3px solid white;
+  margin: 30px;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  text-align: center;
+  
+}
 
+.div3 .produto{
+
+  width: 90%;
+  padding: 10px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  border: 3px solid #ffffff;
+  border-radius: 30px;
+  margin: 10px;
+  height: 190px;
+}
+.div3 .produto .text{
+  text-align: center;
+}
+.div3 .produto input{
+  width: 45px;
+}
 /* Fim do box da direita */
 /* Rodapé da página */
 .rodape{
